@@ -3,40 +3,63 @@
     padding: 0;
 }
 
+html{
+    font-size: 12px;
+}
+
 body {
     color: #363636;
     font-family: Arial, Tahoma, Verdana, sans-serif;
     background: url("../img/concrete_wall_3.png") repeat scroll 0 0 #eaeaea;
 }
 
-/*@media screen and ( max-width: 1200px ) {*/
-    /*.wrap-counterparties {*/
-        /*display: none;*/
-        /*float: none;*/
-    /*}*/
+@media only screen and (max-width: 480px) {
+    html{
+        font-size: 16px;
+    }
+}
 
-    /*.content {*/
-        /*width: 1000px !important;*/
-    /*}*/
+@media handheld and (min-width: 480px) {
+/*Здесь стили более разумных, но все еще мобильных устройств. Android, iPhone  и так далее.*/
+    html{
+        font-size: 16px;
+    }
+}
+@media handheld and (min-width: 768px) {
+    /*    Здесь стили более разумных, но все еще мобильных устройств. Android, iPhone  и так далее.    */
+    html{
+        font-size: 14px;
+    }
+}
 
-    /*.wrap-new-pay {*/
-        /*float: none !important;*/
-        /*margin: 0 auto;*/
-    /*}*/
+@media only screen and (max-width: 768px) {
+    .content .wrap-new-pay,
+    .content .wrap-counterparties {
+        float: left;
+        width:100%;
+    }/*Планшеты в режиме portrait.*/
+}
 
-/*}*/
+@media only screen and (min-width: 992px) {
+    .content .wrap-new-pay,
+    .content .wrap-counterparties{
+        width: 50%;
+    }
+    .content .wrap-counterparties{
+        float: right;
+    }/*Планшеты в режиме landscape, нетбуки, ноутбуки, десктоп.*/
+}
 
-/*@media screen and ( max-width: 1000px ) {*/
-    /*.content {*/
-        /*width: 800px !important;*/
-    /*}*/
-/*}*/
-
-/*@media screen and ( max-width: 600px ) {*/
-    /*.wrap-new-pay {*/
-        /*float: left !important;*/
-    /*}*/
-/*}*/
+@media only screen and (min-width: 1382px) {
+    html{/*    Десктоп с большими разрешениями    */
+        font-size: 18px;
+    }
+}
+@media only screen and (min-width: 1930px) {
+    html{/*    Retina    */
+        font-size: 22px;
+    }
+}
 
 .top {
     height: 33px;
@@ -50,7 +73,7 @@ body {
     border-left: 3px solid #603636;
     color: #5e9827;
     display: inline;
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: bold;
     line-height: 33px;
     padding: 0 8px;
@@ -66,19 +89,12 @@ body {
 
 .content {
     margin: 0 auto;
-    /*width: 1280px;*/
     width: 98%;
-}
-
-.wrap-new-pay {
-    /*width: 604px;*/
-    /*height: 440px;*/
-    /*float: left;*/
 }
 
 .title {
     color: #000;
-    font-size: 20px;
+    font-size: 1.3rem; /*1rem = 12px;*/
     font-weight: bold;
     text-align: center;
 }
@@ -104,6 +120,7 @@ body {
 
 .wrap-new-pay .new-pay {
     border-collapse: collapse;
+    width: 98%;
 }
 
 .wrap-new-pay .new-pay td {
@@ -113,11 +130,11 @@ body {
 
 .wrap-new-pay .new-pay td:first-child {
     background-color: rgba(59, 59, 59, 0.05);
-    font-size: 12px;
-    line-height: 0px;
+    font-size: 1rem;
+    line-height: 0;
     padding-right: 6px;
     text-align: right;
-    width: 138px;
+    width: 24%;
     font-weight: bold;
     color: #444;
 }
@@ -128,7 +145,6 @@ body {
 
 .wrap-new-pay .new-pay td:nth-child(2) {
     text-align: left;
-    width: 432px;
 }
 
 .wrap-new-pay .new-pay td input {
@@ -141,12 +157,12 @@ body {
 }
 
 .wrap-new-pay .new-pay .date-new-pay {
-    font-size: 12px;
+    font-size: 0.8rem;
     margin-left: 27px;
 }
 
 .wrap-new-pay .new-pay .account-sender {
-    width: 373px;
+    width: 98%;
     margin-left: 8px;
     padding-left: 5px;
 }
@@ -158,7 +174,7 @@ body {
 
 .wrap-new-pay .new-pay td textarea {
     margin: 8px 0 8px 8px;
-    width: 361px;
+    width: 98%;
     height: 60px;
     padding-left: 5px;
     border: 1px solid #cccccc;
@@ -180,25 +196,22 @@ body {
     box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.5) inset;
     color: #fff;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 0.8rem;
     line-height: 1;
     text-align: center;
     font-weight: bold;
     margin: 0 9px 0 -5px;
-    padding: 0px;
+    padding: 0;
 }
 
 .wrap-new-pay .new-pay td.actions {
     text-align: center;
     border-bottom: 1px solid #f9f9f9;
 }
-
 /*---------------------------------- Таблица предприятий-контрагентов --------------------- */
 /* main block of the right block */
 
 .wrap-counterparties {
-/*    position: relative;*/
-    bottom: 0;
     width: 50%;
     float: right;
 }
@@ -210,7 +223,7 @@ body {
 
 .wrap-payments-list .wrap-search .search,
 .wrap-counterparties .wrap-search .search {
-    background: url("../img/icon-search.jpg") no-repeat scroll 4px 6px #fff;
+    background: url("../img/icon-search.jpg") no-repeat scroll 4px 0.5rem #fff;
     padding-left: 25px;
     width:50%;
     font-weight: bold;
@@ -244,10 +257,6 @@ body {
     font-weight: bold;
 }
 
-.wrap-counterparties .wrap-search .sort-type selected {
-    background: url('../img/icon.jpg') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
-
 .wrap-counterparties .wrap-span-info {
     clear: left;
     height: 15px;
@@ -257,7 +266,7 @@ body {
     width: 330px;
 }
 .wrap-counterparties .wrap-span-info span {
-    font-size: 10px;
+    font-size: 0.5rem;
     color: #7a7a7a;
     height: 15px;
 }
@@ -280,7 +289,6 @@ body {
 
 .wrap-table-old-pay {
     position: relative;
-    /*width: 674px;*/
 }
 
 .wrap-table-old-pay .wrap-tcontent {
@@ -289,12 +297,11 @@ body {
     position: relative;
     padding: 20px 0;
     z-index: 1;
-    /*width: 676px;*/
 }
 
 .wrap-table-old-pay .thead-top,
 .wrap-table-old-pay .thead-bottom {
-    font-size: 12px;
+    font-size: 1rem;
     font-weight: bold;
     color: #444;
     width: 100%;
@@ -303,10 +310,8 @@ body {
 .wrap-table-old-pay .wrap-tcontent .table-pay,
 .wrap-table-old-pay .thead-top,
 .wrap-table-old-pay .thead-bottom {
-    /*width: 252px;*/
     border-collapse: collapse;
 }
-
 
 .wrap-table-old-pay .thead-top td:first-child,
 .wrap-table-old-pay .thead-bottom td:first-child,
@@ -330,6 +335,7 @@ body {
 .wrap-table-old-pay .thead-bottom td:last-child {
     width: 85px;
 }
+
 .wrap-table-old-pay .wrap-tcontent .table-pay .rating{
     width: 55px;
     line-height: 38px;
@@ -364,12 +370,10 @@ body {
     height: 20px;
 }
 
-
 .wrap-table-old-pay .thead-top,
 .wrap-table-old-pay .thead-bottom {
     position: absolute;
     z-index: 2;
-    /*width: 660px;*/
 }
 
 .wrap-table-old-pay .thead-top {
@@ -381,9 +385,8 @@ body {
 }
 
 .wrap-table-old-pay .wrap-tcontent .table-pay {
-    font-size: 12px;
+    font-size: 0.9rem;
     font-weight: bold;
-/*    width: 659px;*/
     width: 100%;
 }
 
@@ -406,17 +409,17 @@ body {
 .wrap-table-old-pay .thead-bottom td {
     text-align: center;
     background: #d4d4d4;
+    height: 2rem;
 }
-
 
 /* section add background for text, when customer searching */
 span.highlight {
     background-color: rgba(118, 164, 187, 0.50); cursor: pointer; }
-
 
 footer {
     float: left;
     margin-top: 2%;
     text-align: center;
     width: 100%;
+    font-size: 0.8rem;
 }
