@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>Контрагенты тест - создана запись в ЛХ </title>
+        <link rel ='stylesheet' type='text/css' href='css/style.css'/>
+    </head>
+	<body>
+
+        <div class="top">
+            <a href="#">Архив платежей</a>
+            <a href="#">Создать новый платёж</a>
+        </div>
+          <div class='wrap-content'>
+            <div class='content'>
+              <div class='wrap-new-pay'>
+                    <h2 class='title'>Заявка на новый платёж</h2>
+                    <form class='form-new-pay'>
+
+                    </form>
+              </div>
+
+              <div class='wrap-old-pay'>
+                    <h2 class='title'>Лента платежей</h2>
+                    <div class='wrap-search'>
+                        <input class='search' type='text' placeholder='Введите поисковой запрос' />
+                        <select class='sort-type'>
+                            <option selected='selected'>тип сортировки</option>
+                            <option>последние добавленные</option>
+                            <option>часто используемые</option>
+                        </select>
+<!--                        <div class='wrap-span-info'>
+                            <span>Найдено записей:</span>
+                            <span class='amount-payments-found'></span>
+                            <span>по запросу</span>
+                            <span class='aktual-sort-type'>""</span>
+
+                            <span class='aktual-data'>
+                                Всего записей:
+                                <textarea disabled class='aktual-all'></textarea>
+                            </span>
+
+                            <span class='aktual-data'>
+                                Прогружено записей:
+                                <textarea  disabled class='aktual-k'></textarea>
+                            </span>
+
+                        </div>-->
+                    </div>
+
+                <div class="wrap-table-old-pay">
+                  	<table class="thead-top">
+                	 		<tr>
+                	 			<td>Сумма</td>
+                	 			<td>Получатель</td>
+                	 			<td>Назначение</td>
+                	 			<td>Рейтинг</td>
+                	 		</tr>
+                	 	</table>
+                	 	<table class="thead-bottom">
+                	 		<tr>
+                	 			<td>Сумма</td>
+                	 			<td>Получатель</td>
+                	 			<td>Назначение</td>
+                	 			<td>Рейтинг</td>
+                	 		</tr>
+                	 	</table>
+                	 	<div class="wrap-tcontent">
+                            <!-- тут отрисуеться таблица юл-ли с данными Локального хранилища 
+                            <div>
+                                <ul>
+                                    <li>1 account</li>
+                                    <li>3 nceo</li>
+                                    <li>4 naming</li>
+                                    <li>2 ifi</li>
+                                </ul>
+                            </div>-->
+                  	 	</div>
+                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ----------------------- Templates --------------------------- -->
+ <!--/* 
+      <script type="text/template" id="table-pay">
+        <ul>
+            <li><%= recipient_account %>,</li>
+            <li><%= recipient_name %>,</li>
+            <li><%= recipient_ifi %>,</li>
+            <li><%= recipient_nceo %></li>
+        </ul>
+      </script>
+
+       
+        <script type="text/template" id="table-pay">          
+            <td></td>
+            <td>
+                <%= recipient_account %>,<%= recipient_name %>,<%= recipient_ifi %>,<%= recipient_nceo %>
+                </td><td>
+                </td><td>
+                </td><td>
+                <a href='#' class='del'></a>
+            </td>
+        </script>
+        */ -->
+
+          <script type="text/template" id="new-pay">
+
+                <tr>
+                    <td nowrap>Номер документа:</td>
+                    <td><input type='text' name='num' maxlength='20'/><span class='date-new-pay'>23.05.14</span></td> 
+                </tr>
+               <tr>
+                    <td nowrap>Счет отправителя:</td>
+                    <td>
+                        <select class='account-sender'>
+                            <option>2600505050505 Иванов И.И.</option>
+                            <option>2600505050506 Сидоров С.С.</option>
+                            <option>2600505050507 Петров П.П.</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td nowrap>Сумма:</td>
+                    <td><input type='text' class='numberSum' name='sum' maxlength='16'/></td> 
+                </tr>
+                <tr>
+                    <td nowrap>Счет получателя:</td>
+                    <td><input type='text' class='number' name='recipient_account' min='5' maxlength='19' value='<%= recipient_account %>'/></td>
+                </tr>
+                <tr>
+                    <td nowrap>Код ЕГРПОУ(ОКПО):</td>
+                    <td><input type='text' class='number' name='recipient_nceo' maxlength='16' value='<%= recipient_nceo %>'/></td>
+                </tr>
+                <tr>
+                    <td nowrap>Наименование:</td>
+                    <td><input type='text' name='recipient_name' maxlength='140' value='<%= recipient_name %>'/></td>
+                </tr>
+                <tr>
+                    <td nowrap>Код банка(МФО):</td>
+                    <td><input type='text' class='number' name='recipient_ifi' maxlength='6' value='<%= recipient_ifi %>'/></td>
+                </tr>
+                <tr>
+                    <td class='details'  nowrap>Назначение платежа:</td>
+                    <td><textarea name='details' maxlength='160'></textarea></td>
+                </tr>
+                <tr>
+                    <td   class='actions' colspan='2'>
+                      <input type='button' class='send' value='Подписать и отправить' title="Заполнить коллекцию платежей тестовыми платежами"/>
+                      <input type='button' class='save' value='Сохранить' />
+                    </td>
+                </tr>
+
+          </script>
+        <script type="text/javascript" src="js/jQuery.js"></script>
+        <script type="text/javascript" src="js/underscore.js"></script>
+        <script type="text/javascript" src="js/backbone.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/testScript.js"></script>
+	</body>
+</html>
