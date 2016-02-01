@@ -1,2 +1,2 @@
 # payments
-Backbone.js test module
+Backbone.js test module, some test
