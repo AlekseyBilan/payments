@@ -20,7 +20,8 @@ $(function () {
                     recipient_account: account.toString(),
                     details: getDiferentDetailseText(Math.floor(Math.random() * 4)),
                     num: num,
-                    sum: sum+' UAH'
+                    sum: sum+' UAH',
+                    id: num
                 });
                 Recurs();
             }, 0);

@@ -9,7 +9,8 @@ var NewPaymentModel = Backbone.Model.extend({
         recipient_name: '',
         recipient_ifi: '',
         details: '',
-        rating: 1
+        rating: 1,
+        id:''
     },
 
     url: '/NewPaymentModel',
@@ -22,8 +23,7 @@ var NewPaymentModel = Backbone.Model.extend({
         if (this.validate(attr)) {
             this.set(attr);
             this.trigger('save');
-            //this.clear();
-            this.set(this.defaults, {reset: true}); // очистка инпутов
+            this.set(this.defaults, {reset: true});
         }
     },
 
@@ -152,20 +152,8 @@ var PaymentView = Backbone.View.extend({
 
     setPaymentAttr: function () {
         //TODO fix rating counter
-        console.log('click', this.model.attributes);
+        //console.log('click', this.model.attributes);
         newPaymentView.fillInput( this.model );
-    },
-    //тестовый метод который добавит один платеж на страницу
-    addOneModel: function (model){
-        console.log('model in addOneModel (view)',model);
-        var a = _.template(
-                '<td class="sum"><%= sum %></td>' +
-                '<td class="recipient_data"><%= recipient_account %>, <%= recipient_name %>, <%= recipient_nceo %> </td>' +
-                '<td class="details"><%= details %></td>' +
-                '<td align="center" class="rating"><%= rating %><a href="#" class="del"></a></td>'
-            , model.attributes);
-        console.log('data for the add in html', a);
-        $('.wrap-tcontent').prepend(a);
     }
 });
 // ------- ModuleView wrapper(paymentList view)View для списка-------------------------------------------------
@@ -176,7 +164,7 @@ var PaymentCollectionView = Backbone.View.extend({
     className: 'table-pay',
 
     template: function () {
-        console.log('template PaymentCollectionView', this.model.attributes);
+        //console.log('template PaymentCollectionView', this.model.attributes);
         this.payment_clone();
     },
 
@@ -202,34 +190,10 @@ var PaymentCollectionView = Backbone.View.extend({
         this.$el.append(modelView.el)
     },
     add: function (payment) {
-        console.log('aaa', payment);
         var modelView = new PaymentView({ model: payment });
         this.$el.append(modelView.el)
-    },
-
-    search: function (data) {
-        console.log('search', data);
-
-        if (data == '') {
-            // show all models
-        }
-        //$('.wrap-tcontent').find('div').remove();//.html(''); // ОЧИСТКА ШТМЛ контейнера для загрузки результатов поиска
-
-        var request = data;
-        var pattern = '.*' + request + '.*';
-        var regexp = new RegExp(pattern);
-
-        var search = this.collection.filter(function (model) {
-            return regexp.test(model.values().join());
-        });
-
-        console.log('search res', search);
-        search.forEach(function(item) {
-            console.log(item.attributes);
-            this.add(item);
-        });
-// метод построения результатов поиска
     }
+
 });
 // ---------------------- Module NewPaymentModelView ----------------------------
 
@@ -249,19 +213,7 @@ var NewPaymentView = Backbone.View.extend({
         this.model.on('change', this.render, this);
         this.render();
     },
-    //Save data in inputs
-    /*     saveData: function() {
-     console.log('1');
-     this.model
-     .set(
-     {recipient_account: this.$el.find('input[name=recipient_account]').val(),
-     recipient_nceo: this.$el.find('input[name=recipient_nceo]').val(),
-     recipient_name: this.$el.find('input[name=recipient_name]').val(),
-     recipient_ifi: this.$el.find('input[name=recipient_ifi]').val()}, {silent:true})
-     .trigger('paymentView:saveSome');
-     localStorage.setItem( 'onePayment', JSON.stringify( this.model ) );
-     console.log('2', this.model.attributes);
-     },*/
+
     render: function (model) {
         this.$el.html(this.template());
         return this;
