@@ -15,13 +15,13 @@ $(function(){
 
 	// поиск на JQuery TODO - make search by Backbone
 	 var search = $(".search");
-    search.keyup(function(e){
-      $('.table-pay tr td').each(function(){
+    search.keyup(function(){
+      $('.table-pay tr').each(function(){
+          console.log('text ===', $(this).text());
         if($(this).text().indexOf(search.val()) === -1) {
-        	console.log('1', $(this).parent());
-          $(this).parent().hide();
+          $(this).hide();
         } else {
-          $(this).parent().show();
+          $(this).show();
         }
       });
     });
