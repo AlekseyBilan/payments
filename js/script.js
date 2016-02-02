@@ -17,7 +17,6 @@ $(function(){
 	 var search = $(".search");
     search.keyup(function(){
       $('.table-pay tr').each(function(){
-          console.log('text ===', $(this).text());
         if($(this).text().indexOf(search.val()) === -1) {
           $(this).hide();
         } else {
