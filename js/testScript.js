@@ -1,12 +1,19 @@
 // TEST functionals - fill localStorage by test payments
 $(function () {
+        //AUTO start filling localStorage
+/*
+        if(localStorage.getItem('payments').length < 1){
+            fillLocalStorage();
+        }
+        setTimeout(function () {StopTimeOut()}, 1500);
+*/
         $('.wrap-new-pay').on('click', 'input.send', function () {
-            Recurs();
-            Stop()
+            fillLocalStorage();
+            stop()
         });
         var setTime, num = 1;
 
-        function Recurs() {
+        function fillLocalStorage() {
             setTime = setTimeout(function () {
                 num++;
                 var account = Math.floor((Math.random() * 9000000000000) + 260000000000000);
@@ -20,10 +27,9 @@ $(function () {
                     recipient_account: account.toString(),
                     details: getDiferentDetailseText(Math.floor(Math.random() * 4)),
                     num: num,
-                    sum: sum+' UAH',
-                    id: num
+                    sum: sum+' UAH'
                 });
-                Recurs();
+                fillLocalStorage();
             }, 0);
             return false;
         }
@@ -31,7 +37,7 @@ $(function () {
         function getDiferentDetailseText(num) {
             var res;
             if (num === 1) {
-                res = 'На услуг';
+                res = 'Оплата услуг';
             } else if (num === 2) {
                 res = 'Налоги';
             } else if (num === 3) {
@@ -44,7 +50,7 @@ $(function () {
             return res;
         }
 
-        function Stop() {
+        function stop() {
             $('.wrap-new-pay').append('<button class="stop send">StopTimeOut</button>');
         }
 

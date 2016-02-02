@@ -1,5 +1,4 @@
 // -------------------------------- ModuleModel --------------------------------
-localStorage.setItem('payments', 1);
 var NewPaymentModel = Backbone.Model.extend({
 
     defaults: {
@@ -10,28 +9,17 @@ var NewPaymentModel = Backbone.Model.extend({
         recipient_name: '',
         recipient_ifi: '',
         details: '',
-        rating: 1,
-        id:''
+        rating: 1
     },
 
     url: '/NewPaymentModel',
 
     save: function (attr) {
-        var result = true;
-        if (this.validate(attr)) {
-            result = false;
-        }
         if (this.validate(attr)) {
             this.set(attr);
             this.trigger('save');
             this.set(this.defaults, {reset: true});
         }
-    },
-
-    insertValues: function (model) {
-        _.each(model.changed, function (val, key) {
-            this.$el.find('[name=' + key + ']').val(val);
-        }, this);
     },
 
     validate: function (attr) {
@@ -71,11 +59,14 @@ var PaymentListCollection = Backbone.Collection.extend({
     },
 
     getData: function () {
-        var data = JSON.parse(localStorage.getItem('payments'));
-        _.each(data, function (val) {
-            this.add(val);
-        }, this);
-        console.time('time');
+        if(localStorage.getItem('payments').length < 1){
+            var data = JSON.parse(localStorage.getItem('payments'));
+            _.each(data, function (val) {
+                this.add(val);
+            }, this);
+        }else{
+            console.log(' localStorage is empty ');
+        }
     },
 
     saveToLocalStorage: function () {
@@ -92,18 +83,7 @@ var PaymentListCollection = Backbone.Collection.extend({
     },
 
     addOne: function () {
-        var someData = _.pick(this.model.attributes, 'num', 'sum', 'recipient_account', 'recipient_nceo', 'recipient_name', 'recipient_ifi', 'details', 'rating');
-        console.log('NewPaymentModel, someData', this.model.attributes, someData);
-        if (
-            this.collection.findWhere(someData) == undefined
-            ) {
-            this.collection
-                .push(someData)
-                .trigger('addToLocalStorage');
-        } else {
-            console.log('Введенные данные не уникальны!')
-        }
-
+        this.collection.push(this.model.attributes).trigger('addToLocalStorage');
     }
 });
 // --------------- Module View (newPaymentView для модели(платежки)) ----------------------
@@ -111,7 +91,7 @@ var PaymentView = Backbone.View.extend({
     tagName: 'tr',
     template: function () {
         return _.template(
-            '<td class="sum"><%= sum %> UAH</td>' +
+            '<td class="sum"><%= sum %></td>' +
             '<td class="recipient_data"><%= recipient_account %>, <%= recipient_name %>, <%= recipient_nceo %> </td>' +
             '<td class="details"><%= details %></td>' +
             '<td align="center" class="rating"><%= rating %><a href="#" class="del"></a></td>'
@@ -152,8 +132,6 @@ var PaymentView = Backbone.View.extend({
     },
 
     setPaymentAttr: function () {
-        //TODO fix rating counter
-        //console.log('click', this.model.attributes);
         newPaymentView.fillInput( this.model );
     }
 });
@@ -165,7 +143,6 @@ var PaymentCollectionView = Backbone.View.extend({
     className: 'table-pay',
 
     template: function () {
-        //console.log('template PaymentCollectionView', this.model.attributes);
         this.payment_clone();
     },
 
@@ -186,7 +163,6 @@ var PaymentCollectionView = Backbone.View.extend({
     },
 
     addModel: function (payment) {
-        //console.log('PAYMENTATTR', payment);
         var modelView = new PaymentView({ model: payment });
         this.$el.append(modelView.el)
     },
@@ -207,7 +183,7 @@ var NewPaymentView = Backbone.View.extend({
     },
     events: {
         'click .save': 'sendData',
-        'keyup input': 'saveData' // save data in to localStorage
+        'keyup input': 'saveData' // save data in localStorage
     },
 
     initialize: function () {
@@ -222,7 +198,6 @@ var NewPaymentView = Backbone.View.extend({
 
     sendData: function () {
         this.model.save(this.serialize());
-        console.log('serialize', this.serialize());
     },
 
     serialize: function () {
