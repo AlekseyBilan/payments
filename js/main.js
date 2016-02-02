@@ -1,4 +1,5 @@
 // -------------------------------- ModuleModel --------------------------------
+localStorage.setItem('payments', 1);
 var NewPaymentModel = Backbone.Model.extend({
 
     defaults: {

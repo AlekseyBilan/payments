@@ -9,9 +9,9 @@ $(function () {
         function Recurs() {
             setTime = setTimeout(function () {
                 num++;
-                var nseo = Math.floor((Math.random() * 9000000000000) + 260000000000000);
+                var account = Math.floor((Math.random() * 9000000000000) + 260000000000000);
                 var ifi = Math.floor((Math.random() * 900000) + 100000);
-                var account = Math.floor((Math.random() * 90000000) + 10000000);
+                var nseo = Math.floor((Math.random() * 90000000) + 10000000);
                 var sum = Math.floor((Math.random() * 900) + 1000);
                 newPaymentModel.save({
                     recipient_name: "Получатель №" + Math.floor(Math.random() * 100),
