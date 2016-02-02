@@ -59,7 +59,7 @@ var PaymentListCollection = Backbone.Collection.extend({
     },
 
     getData: function () {
-        if(localStorage.getItem('payments').length < 1){
+        if(localStorage.getItem('payments').length > 0){
             var data = JSON.parse(localStorage.getItem('payments'));
             _.each(data, function (val) {
                 this.add(val);
