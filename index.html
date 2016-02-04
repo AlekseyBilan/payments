@@ -23,7 +23,7 @@
               <div class='wrap-old-pay'>
                     <h2 class='title'>Лента платежей</h2>
                     <div class='wrap-search'>
-                        <input class='search' type='text' placeholder='Введите поисковой запрос' />
+                        <input class='search' type='text' id="spterm" name="spterm" placeholder='Введите поисковой запрос' />
                         <select class='sort-type'>
                             <option selected='selected'>тип сортировки</option>
                             <option>последние добавленные</option>
@@ -48,7 +48,7 @@
                 	 			<td>Рейтинг</td>
                 	 		</tr>
                 	 	</table>
-                	 	<div class="wrap-tcontent">
+                	 	<div class="wrap-tcontent" id="content">
                   	 	</div>
                  </div>
               </div>
@@ -107,8 +107,10 @@
         <script type="text/javascript" src="js/jQuery.js"></script>
         <script type="text/javascript" src="js/underscore.js"></script>
         <script type="text/javascript" src="js/backbone.js"></script>
+        <!--<script type="text/javascript" src="js/tapas.js"></script>-->
+        <script type="text/javascript" src="js/addColorBgToText.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
-        <script type="text/javascript" src="js/testScript.js"></script>
+        <script type="text/javascript" src="js/paymentsAutoCreator.js"></script>
 	</body>
 </html>

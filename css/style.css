@@ -398,3 +398,7 @@ body {
     text-align: center;
     background: #d4d4d4;
 }
+/* section add background for text, when customer searching */
+span.highlight {
+    background-color: rgba(118, 164, 187, 0.80); cursor: pointer; }
+
