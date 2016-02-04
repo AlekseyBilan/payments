@@ -380,7 +380,7 @@ body {
     cursor: pointer;
 }
 .wrap-table-old-pay .wrap-tcontent .table-pay tr:hover {
-    background-color: rgba(59, 59, 59, 0.2);
+    background-color: rgba(94, 152, 39, 0.1);
 }
 
 /*.wrap-table-old-pay .wrap-tcontent .table-pay tr:last-child {*/
@@ -400,5 +400,5 @@ body {
 }
 /* section add background for text, when customer searching */
 span.highlight {
-    background-color: rgba(118, 164, 187, 0.80); cursor: pointer; }
+    background-color: rgba(118, 164, 187, 0.50); cursor: pointer; }
 

@@ -21,7 +21,7 @@ $(function () {
                 var nseo = Math.floor((Math.random() * 90000000) + 10000000);
                 var sum = Math.floor((Math.random() * 900) + 1000);
                 newPaymentModel.save({
-                    recipient_name: "Получатель №" + Math.floor(Math.random() * 100),
+                    recipient_name: "Получатель №" + num,
                     recipient_nceo: nseo.toString(),
                     recipient_ifi: ifi.toString(),
                     recipient_account: account.toString(),
@@ -51,7 +51,7 @@ $(function () {
         }
 
         function stop() {
-            $('.wrap-new-pay').append('<button class="stop send">StopTimeOut</button>');
+            $('.wrap-new-pay').append('<button class="stop send">Stop to fill LS by tests payments</button>');
         }
 
         $('.wrap-new-pay').on('click', 'button.stop', function () {
