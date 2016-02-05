@@ -5,12 +5,17 @@ $(function () {
         if(localStorage.getItem('payments').length < 1){
             fillLocalStorage();
         }
-        setTimeout(function () {StopTimeOut()}, 1500);
+        setTimeout(function () {stopTimeOut()}, 1500);
 */
-        $('.wrap-new-pay').on('click', 'input.send', function () {
+        $('.wrap-new-pay')
+            .on('click', 'input.send', function () {
             fillLocalStorage();
             stop()
-        });
+            })
+            .on('click', 'button.stop', function () {
+                stopTimeOut()
+            });
+
         var setTime, num = 1;
 
         function fillLocalStorage() {
@@ -54,10 +59,7 @@ $(function () {
             $('.wrap-new-pay').append('<button class="stop send">Stop to fill LS by tests payments</button>');
         }
 
-        $('.wrap-new-pay').on('click', 'button.stop', function () {
-            StopTimeOut()
-        });
-        function StopTimeOut() {
+        function stopTimeOut() {
             clearTimeout(setTime);
             $('.wrap-new-pay .stop').remove();
         }

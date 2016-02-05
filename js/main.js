@@ -89,6 +89,7 @@ var PaymentListCollection = Backbone.Collection.extend({
 // --------------- Module View (newPaymentView для модели(платежки)) ----------------------
 var PaymentView = Backbone.View.extend({
     tagName: 'tr',
+    className: 'payment',
     template: function () {
         return _.template(
             '<td class="sum"><%= sum %></td>' +
