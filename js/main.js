@@ -60,6 +60,8 @@ var NewPaymentModel = Backbone.Model.extend({
 var PaymentListCollection = Backbone.Collection.extend({
 
     url: '/PaymentListCollection',
+    sortAttribute: "rating",
+    sortDirection: '-1',
 
     initialize: function () {
         this.getData();
@@ -96,10 +98,30 @@ var PaymentListCollection = Backbone.Collection.extend({
     },
 
     changeModel: function (id){
-        var r = paymentListCollection.get(id).attributes.rating || '';
-        if(r){
-            paymentListCollection.get(id).set('rating', r+1);
-            paymentCollectionView.renderOneModel(paymentListCollection.get(id));
+        try {
+            var r = '' || paymentListCollection.get(id).attributes.rating;
+                paymentListCollection.get(id).set('rating', r+1);
+        } catch (err) {
+            console.log('error = ', err);
+        }
+    },
+
+    sortMovies: function (attr) {
+        this.sortAttribute = attr;
+        this.sort();
+    },
+
+    comparator: function(a, b) {
+        console.log('comparator', a, b);
+        var a = a.get(this.sortAttribute),
+            b = b.get(this.sortAttribute);
+
+        if (a == b) return 0;
+
+        if (this.sortDirection == 1) {
+            return a > b ? 1 : -1;
+        } else {
+            return a < b ? 1 : -1;
         }
     }
 });
@@ -129,7 +151,7 @@ var PaymentView = Backbone.View.extend({
     initialize: function () {
         this.model.on('save', this.render, this);
         this.model.on('destroy', this.remove, this);
-        this.listenTo(this.model,'change', this.upData);
+        this.listenTo(this.model,'change', this.render);
         this.render();
     },
 
@@ -149,17 +171,12 @@ var PaymentView = Backbone.View.extend({
         this.$el.remove();
     },
 
-    upData: function () {
-        this.$el.remove();
-        this.render();
-    },
-
     setPaymentAttr: function () {
         idFromChangeRating = this.model.cid;
         newPaymentView.fillInput( this.model );
     }
 });
-// ------- ModuleView wrapper(paymentList view)View для списка-------------------------------------------------
+// ------- View wrapper(paymentList view)View для списка-------------------------------------------------
 
 var PaymentCollectionView = Backbone.View.extend({
 
@@ -176,6 +193,7 @@ var PaymentCollectionView = Backbone.View.extend({
 
     initialize: function () {
         this.collection.on('add', this.addModel, this);
+        this.listenTo(this.collection, "sort", this.renderAllCollection);
     },
 
     render: function () {
@@ -183,6 +201,18 @@ var PaymentCollectionView = Backbone.View.extend({
             var modelView = new PaymentView({ model: payment });
             this.$el.append(modelView.render().el);
         }, this);
+        return this;
+    },
+    renderAllCollection: function(){
+        var sortedCollection = '', modelHtml;
+        this.collection.each(function (payment) {
+            var modelView = new PaymentView({ model: payment });
+            modelHtml = modelView.render().el;
+            console.log(modelView.render().el);
+            sortedCollection = sortedCollection + modelHtml;
+        }, this);
+        console.log(sortedCollection);
+        this.$el.append(sortedCollection);
         return this;
     },
 
@@ -203,6 +233,7 @@ var NewPaymentView = Backbone.View.extend({
     },
     events: {
         'click .save': 'sendData',
+        'change .sort-type': 'sortCollection',
         'keyup input': 'saveData' // save data in localStorage
     },
 
@@ -235,6 +266,10 @@ var NewPaymentView = Backbone.View.extend({
     /* filling form create a new payment by data from model */
     fillInput: function( model ){
         _.each(model.attributes, function(val, key){this.$el.find('[name='+key+']').val(val)}, this);
+    },
+    sortCollection: function() {
+        console.log('sortCollection',this);
+        paymentListCollection.sortMovies()
     }
 });
 

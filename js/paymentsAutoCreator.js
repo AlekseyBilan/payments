@@ -67,7 +67,6 @@ $(function () {
             $('.wrap-new-pay .stop').remove();
         }
     }
-)
-;
+);
 
  
