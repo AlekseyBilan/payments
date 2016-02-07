@@ -6,10 +6,18 @@ $(function(){
     	$(this).val($(this).val().replace(/[^\d]/g, ''));   
 	});
 
-    /*  $('input.search').on('keyup', function(search){
-      var data = $(this).val();
-      paymentCollectionView.search(data);
-  });*/
+    // обработчик навешен по средствам JQuery TODO - make it by Backbone
+    $('.sort-type').on('change', function(){
+        console.log('sort-type ', $(this).find('option:selected').data('attr'));
+       var text = $(this).find('option:selected').data('attr');
+        if(text && text == 'date-create'){
+            paymentListCollection.sortDirection = -1; //сортировать в обратном порядке
+            paymentListCollection.sortMovies('date_create');
+        }else if(text && text == 'rating'){
+            paymentListCollection.sortMovies('rating');
+        }
+    });
+
     checkAmountPayments();
 	// поиск на JQuery TODO - make search by Backbone
 	 var search = $(".search"), searchText;

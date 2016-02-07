@@ -134,7 +134,7 @@ var PaymentView = Backbone.View.extend({
             '<td class="sum"><%= sum %></td>' +
             '<td class="recipient_data"><%= recipient_account %>, <%= recipient_name %>, <%= recipient_nceo %> </td>' +
             '<td class="details"><%= details %></td>' +
-            '<td align="center" class="rating date_create" data-create-date="<%= date_create %>"><%= rating %><a href="#" class="del"></a></td>'
+            '<td align="center" class="rating date_create" data-date-create="<%- date_create %>"><%= rating %><a href="#" class="del"></a></td>'
             , this.model.attributes);
         this.payment_clone();
     },
@@ -193,7 +193,7 @@ var PaymentCollectionView = Backbone.View.extend({
 
     initialize: function () {
         this.collection.on('add', this.addModel, this);
-        this.listenTo(this.collection, "sort", this.renderAllCollection);
+        this.listenTo(this.collection, "sort", this.clearViewCollection, this);
     },
 
     render: function () {
@@ -203,17 +203,12 @@ var PaymentCollectionView = Backbone.View.extend({
         }, this);
         return this;
     },
-    renderAllCollection: function(){
-        var sortedCollection = '', modelHtml;
+    clearViewCollection: function(){
+        $('.payment').remove();
         this.collection.each(function (payment) {
             var modelView = new PaymentView({ model: payment });
-            modelHtml = modelView.render().el;
-            console.log(modelView.render().el);
-            sortedCollection = sortedCollection + modelHtml;
+            this.$el.append(modelView.render().el);
         }, this);
-        console.log(sortedCollection);
-        this.$el.append(sortedCollection);
-        return this;
     },
 
     addModel: function (payment) {
