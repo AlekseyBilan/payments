@@ -332,6 +332,9 @@ body {
     margin: 12px -2px 11px 0;
     width: 16px;
 }
+.wrap-table-old-pay .wrap-tcontent .table-pay .del:hover {
+    background: url("../img/icon-del-hover.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
 
 .wrap-table-old-pay .wrap-tcontent .table-pay td {
     height: 38px;

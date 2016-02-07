@@ -1,7 +1,10 @@
 // -------------------------------- ModuleModel --------------------------------
+var idFromChangeRating; //this variable need to count rating. val = model cid
 var NewPaymentModel = Backbone.Model.extend({
 
     defaults: {
+        id: '',
+        date_create: '',
         num: '',
         sum: '',
         recipient_account: '',
@@ -16,9 +19,15 @@ var NewPaymentModel = Backbone.Model.extend({
 
     save: function (attr) {
         if (this.validate(attr)) {
-            this.set(attr);
+            if(idFromChangeRating){
+                paymentListCollection.changeModel(idFromChangeRating);//не лучшее решение...
+                this.set(attr);
+            }else{
+                this.set(attr);
+            }
             this.trigger('save');
             this.set(this.defaults, {reset: true});
+            $('.noPayments').hide();
         }
     },
 
@@ -33,7 +42,7 @@ var NewPaymentModel = Backbone.Model.extend({
                 (name == 'recipient_ifi' && val.length != 6)
                 ||
                 (name == 'recipient_name' && val.length < 3)
-                || !val
+                //|| !val
                 ) {
                 error_name = name;
                 console.log('Validate Error name = ', error_name);
@@ -59,7 +68,7 @@ var PaymentListCollection = Backbone.Collection.extend({
     },
 
     getData: function () {
-        if(localStorage.getItem('payments').length > 0){
+        if(localStorage.getItem('payments') && localStorage.getItem('payments').length > 0){
             var data = JSON.parse(localStorage.getItem('payments'));
             _.each(data, function (val) {
                 this.add(val);
@@ -84,6 +93,14 @@ var PaymentListCollection = Backbone.Collection.extend({
 
     addOne: function () {
         this.collection.push(this.model.attributes).trigger('addToLocalStorage');
+    },
+
+    changeModel: function (id){
+        var r = paymentListCollection.get(id).attributes.rating || '';
+        if(r){
+            paymentListCollection.get(id).set('rating', r+1);
+            paymentCollectionView.renderOneModel(paymentListCollection.get(id));
+        }
     }
 });
 // --------------- Module View (newPaymentView для модели(платежки)) ----------------------
@@ -95,7 +112,7 @@ var PaymentView = Backbone.View.extend({
             '<td class="sum"><%= sum %></td>' +
             '<td class="recipient_data"><%= recipient_account %>, <%= recipient_name %>, <%= recipient_nceo %> </td>' +
             '<td class="details"><%= details %></td>' +
-            '<td align="center" class="rating"><%= rating %><a href="#" class="del"></a></td>'
+            '<td align="center" class="rating date_create" data-create-date="<%= date_create %>"><%= rating %><a href="#" class="del"></a></td>'
             , this.model.attributes);
         this.payment_clone();
     },
@@ -105,14 +122,14 @@ var PaymentView = Backbone.View.extend({
 
     events: {
         'click a.del': 'clear',
-        'click td': 'setPaymentAttr',
-        'keyup input.search': 'search'
+        'click td': 'setPaymentAttr'/*,
+        'keyup input.search': 'search'*/
     },
 
     initialize: function () {
         this.model.on('save', this.render, this);
         this.model.on('destroy', this.remove, this);
-        this.model.on('saveSome', this.saveSomeDate, this);
+        this.listenTo(this.model,'change', this.upData);
         this.render();
     },
 
@@ -132,7 +149,13 @@ var PaymentView = Backbone.View.extend({
         this.$el.remove();
     },
 
+    upData: function () {
+        this.$el.remove();
+        this.render();
+    },
+
     setPaymentAttr: function () {
+        idFromChangeRating = this.model.cid;
         newPaymentView.fillInput( this.model );
     }
 });
@@ -164,10 +187,6 @@ var PaymentCollectionView = Backbone.View.extend({
     },
 
     addModel: function (payment) {
-        var modelView = new PaymentView({ model: payment });
-        this.$el.append(modelView.el)
-    },
-    add: function (payment) {
         var modelView = new PaymentView({ model: payment });
         this.$el.append(modelView.el)
     }
@@ -209,7 +228,8 @@ var NewPaymentView = Backbone.View.extend({
             recipient_nceo: this.$el.find('input[name=recipient_nceo]').val(),
             recipient_name: this.$el.find('input[name=recipient_name]').val(),
             recipient_ifi: this.$el.find('input[name=recipient_ifi]').val(),
-            details: this.$el.find('textarea[name=details]').val()
+            details: this.$el.find('textarea[name=details]').val(),
+            id: Date.now()
         };
     },
     /* filling form create a new payment by data from model */

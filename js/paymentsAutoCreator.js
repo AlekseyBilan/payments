@@ -26,11 +26,13 @@ $(function () {
                 var nseo = Math.floor((Math.random() * 90000000) + 10000000);
                 var sum = Math.floor((Math.random() * 900) + 1000);
                 newPaymentModel.save({
+                    id: Date.now(),
+                    date_create: Date.now(),
                     recipient_name: "Получатель №" + num,
                     recipient_nceo: nseo.toString(),
                     recipient_ifi: ifi.toString(),
                     recipient_account: account.toString(),
-                    details: getDiferentDetailseText(Math.floor(Math.random() * 4)),
+                    details: getDifferentDetailsText(Math.floor(Math.random() * 4)),
                     num: num,
                     sum: sum+' UAH'
                 });
@@ -39,7 +41,7 @@ $(function () {
             return false;
         }
 
-        function getDiferentDetailseText(num) {
+        function getDifferentDetailsText(num) {
             var res;
             if (num === 1) {
                 res = 'Оплата услуг';
@@ -61,6 +63,7 @@ $(function () {
 
         function stopTimeOut() {
             clearTimeout(setTime);
+            $('.noPayments').hide();
             $('.wrap-new-pay .stop').remove();
         }
     }

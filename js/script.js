@@ -10,7 +10,7 @@ $(function(){
       var data = $(this).val();
       paymentCollectionView.search(data);
   });*/
-    checkAmmountPayments();
+    checkAmountPayments();
 	// поиск на JQuery TODO - make search by Backbone
 	 var search = $(".search"), searchText;
     search.keyup(function(){
@@ -22,10 +22,10 @@ $(function(){
           $(this).show();
         }
       });
-        checkAmmountPayments();
+        checkAmountPayments();
     });
 
-    function checkAmmountPayments(){
+    function checkAmountPayments(){
         if($('.table-pay tr.payment:visible').length > 0){
             $('.noPayments').hide();
         }else if($('.noPayments').length === 0) {
@@ -33,6 +33,5 @@ $(function(){
         }else{
             $('.noPayments').show();
         }
-
     }
 });
