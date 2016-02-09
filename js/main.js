@@ -3,8 +3,8 @@ var idFromChangeRating; //this variable need to count rating. val = model cid
 var NewPaymentModel = Backbone.Model.extend({
 
     defaults: {
-        id: '',
-        date_create: '',
+        id: Date.now(),
+        date_create: Date.now(),
         num: '',
         sum: '',
         recipient_account: '',
