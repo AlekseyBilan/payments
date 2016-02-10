@@ -3,12 +3,17 @@ var NewPaymentView = Backbone.View.extend({
 
     tagName: 'table',
     className: 'new-pay',
+
     template: function (model) {
         return _.template($('#new-pay').html(), this.model.attributes)
     },
+
     events: {
         'click .save': 'sendData',
-        'change .sort-type': 'sortCollection',
+        'keyup .number': 'inputValidate',
+        'keyup .numberSum': 'inputValidate',
+        'change .number': 'inputValidate',
+        'change .numberSum': 'inputValidate',
         'keyup input': 'saveData' // save data in localStorage
     },
 
@@ -42,9 +47,9 @@ var NewPaymentView = Backbone.View.extend({
     fillInput: function( model ){
         _.each(model.attributes, function(val, key){this.$el.find('[name='+key+']').val(val)}, this);
     },
-    sortCollection: function() {
-        console.log('sortCollection',this);
-        paymentListCollection.sortMovies()
+
+    inputValidate: function(e) {
+        $(e.currentTarget).val($(e.currentTarget).val().replace(/[^\d,]/g, ''));
     }
 });
 

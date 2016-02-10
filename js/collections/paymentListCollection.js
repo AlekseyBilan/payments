@@ -47,7 +47,7 @@ var PaymentListCollection = Backbone.Collection.extend({
         }
     },
 
-    sortMovies: function (attr) {
+    sortPayments: function (attr) {
         this.sortAttribute = attr;
         this.sort();
     },
