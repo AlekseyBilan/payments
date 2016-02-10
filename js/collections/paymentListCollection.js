@@ -53,7 +53,6 @@ var PaymentListCollection = Backbone.Collection.extend({
     },
 
     comparator: function(a, b) {
-        console.log('comparator', a, b);
         var a = a.get(this.sortAttribute),
             b = b.get(this.sortAttribute);
 
