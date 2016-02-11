@@ -16,8 +16,7 @@ var PaymentView = Backbone.View.extend({
 
     events: {
         'click a.del': 'clear',
-        'click td': 'setPaymentAttr'/*,
-         'keyup input.search': 'search'*/
+        'click td': 'setPaymentAttr'
     },
 
     initialize: function () {
