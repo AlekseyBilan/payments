@@ -10,10 +10,8 @@ var NewPaymentView = Backbone.View.extend({
 
     events: {
         'click .save': 'sendData',
-        'keyup .number': 'inputValidate',
-        'keyup .numberSum': 'inputValidate',
-        'change .number': 'inputValidate',
-        'change .numberSum': 'inputValidate',
+        'keyup .number , .numberSum': 'inputValidate',
+        'change .number , .numberSum': 'inputValidate',
         'keyup input': 'saveData' // save data in localStorage
     },
 
