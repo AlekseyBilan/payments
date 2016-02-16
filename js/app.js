@@ -1,5 +1,3 @@
-var app = app || {};
-//(function () {})();
 var idFromChangeRating;
 
 var newPaymentModel = new NewPaymentModel;
