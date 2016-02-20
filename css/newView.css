@@ -1,0 +1,405 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #363636;
+    font-family: Arial, Tahoma, Verdana, sans-serif;
+    background: url("../img/concrete_wall_3.png") repeat scroll 0 0 #eaeaea;
+}
+
+@media screen and ( max-width: 1200px ) {
+    .wrap-counterparties {
+        display: none;
+        float: none;
+    }
+
+    .content {
+        width: 1000px !important;
+    }
+
+    .wrap-new-pay {
+        float: none !important;
+        margin: 0 auto;
+    }
+
+}
+
+@media screen and ( max-width: 1000px ) {
+    .content {
+        width: 800px !important;
+    }
+}
+
+@media screen and ( max-width: 600px ) {
+    .wrap-new-pay {
+        float: left !important;
+    }
+}
+
+.top {
+    height: 33px;
+    text-align: center;
+    border-bottom: 1px solid #b6b6b6;
+    background-color: rgba(59, 59, 59, 0.05);
+    margin: 0 auto;
+}
+
+.top a {
+    border-left: 3px solid #603636;
+    color: #5e9827;
+    display: inline;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 33px;
+    padding: 0 8px;
+}
+
+.top a:first-child {
+    border-left: none;
+}
+
+.wrap-content {
+    border-top: 1px solid #f9f9f9;
+}
+
+.content {
+    margin: 0 auto;
+    width: 1280px;
+}
+
+.wrap-new-pay {
+    width: 604px;
+    height: 440px;
+    float: left;
+}
+
+.wrap-counterparties {
+    width: 675px;
+    height: 440px;
+    float: left;
+}
+
+.title {
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.wrap-counterparties .title {
+    margin: 6px 13px 30px 0;
+}
+
+.wrap-new-pay .title {
+    margin: 6px -106px 15px 0;
+}
+
+.wrap-new-pay .new-pay {
+    border-collapse: collapse;
+}
+
+.wrap-new-pay .new-pay td {
+    height: 36px;
+    border-top: 1px solid #f9f9f9;
+}
+
+.wrap-new-pay .new-pay td:first-child {
+    background-color: rgba(59, 59, 59, 0.05);
+    font-size: 12px;
+    line-height: 0px;
+    padding-right: 6px;
+    text-align: right;
+    width: 138px;
+    font-weight: bold;
+    color: #444;
+}
+
+.wrap-new-pay .new-pay tr:nth-child(2) td {
+    height: 27px;
+}
+
+.wrap-new-pay .new-pay td:nth-child(2) {
+    text-align: left;
+    width: 432px;
+}
+
+.wrap-new-pay .new-pay td input {
+    margin-left: 8px;
+    height: 25px;
+    width: 145px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding-left: 5px;
+}
+
+.wrap-new-pay .new-pay .date-new-pay {
+    font-size: 12px;
+    margin-left: 27px;
+}
+
+.wrap-new-pay .new-pay .account-sender {
+    width: 373px;
+    margin-left: 8px;
+    padding-left: 5px;
+}
+
+.wrap-new-pay .new-pay .details {
+    height: 76px;
+    line-height: 76px !important;
+}
+
+.wrap-new-pay .new-pay td textarea {
+    margin: 8px 0 8px 8px;
+    width: 361px;
+    height: 60px;
+    padding-left: 5px;
+    border: 1px solid #cccccc;
+}
+
+.wrap-new-pay .new-pay .send {
+    width: 172px;
+}
+
+.wrap-new-pay .new-pay .save {
+    width: 100px;
+}
+
+.wrap-new-pay .new-pay .send,
+.wrap-new-pay .new-pay .save {
+    background: url("../img/bg-button.jpg") repeat-x scroll 0 0 #fff;
+    border: 1px solid #415e30;
+    border-radius: 5px;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.5) inset;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    font-weight: bold;
+    margin: 0 9px 0 -5px;
+    padding: 0px;
+}
+
+.wrap-new-pay .new-pay td.actions {
+    text-align: center;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+/* ----------------------------- Блок - история платежей -------------------------- */
+/* main wrap of the left block*/
+.wrap-counterparties {
+    position: relative;
+    bottom: 0;
+}
+
+.wrap-counterparties .wrap-search {
+    height: 80px;
+}
+
+.wrap-counterparties .wrap-search .search {
+    background: url("../img/icon-search.jpg") no-repeat scroll 4px 6px #fff;
+    padding-left: 25px;
+    width: 407px;
+    font-weight: bold;
+    margin: 0 14px 0 10px;
+}
+
+.wrap-counterparties .wrap-search .search, .wrap-counterparties .wrap-search .sort-type {
+    float: left;
+    height: 30px;
+    border: 1px solid #b7b7b7;
+    border-radius: 3px;
+}
+
+.wrap-counterparties .wrap-search .sort-type {
+    width: 213px;
+}
+
+.wrap-counterparties .wrap-search .aktual-data {
+}
+
+.wrap-counterparties .wrap-search .aktual-data textarea {
+    width: 60px;
+    height: 15px;
+    margin-top: 5px;
+    text-align: center;
+    line-height: 16px;
+    font-weight: bold;
+}
+
+.wrap-counterparties .wrap-search .sort-type selected {
+    background: url('../img/icon.jpg') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.wrap-counterparties .wrap-span-info {
+    clear: left;
+    height: 15px;
+    margin-left: 8px;
+    position: relative;
+    top: -6px;
+    width: 330px;
+}
+
+.wrap-counterparties .wrap-span-info span {
+    font-size: 10px;
+    color: #7a7a7a;
+    height: 15px;
+}
+
+.wrap-counterparties .wrap-span-info .amount-payments-found {
+    width: 4px;
+    display: inline-block;
+}
+
+/*---------------------------------- Таблица предприятий-контрагентов --------------------- */
+/* main block of the right block */
+.wrap-table-old-pay {
+    position: relative;
+    width: 674px;
+}
+
+.wrap-table-old-pay .wrap-tcontent {
+    height: 233px;
+    overflow: auto;
+    position: relative;
+    padding: 20px 0;
+    z-index: 1;
+    width: 676px;
+}
+
+.wrap-table-old-pay .thead-top,
+.wrap-table-old-pay .thead-bottom {
+    font-size: 12px;
+    font-weight: bold;
+    color: #444;
+}
+
+.wrap-table-old-pay .wrap-tcontent .table-pay,
+.wrap-table-old-pay .thead-top,
+.wrap-table-old-pay .thead-bottom {
+    /*width: 252px;*/
+    border-collapse: collapse;
+}
+
+.wrap-table-old-pay .wrap-tcontent li {
+    display: inline-block;
+    text-align: center;
+    /*width: 100px;*/
+    height: 39px;
+    line-height: 39px;
+}
+
+.wrap-table-old-pay .thead-top td:first-child,
+.wrap-table-old-pay .thead-bottom td:first-child,
+.wrap-table-old-pay .wrap-tcontent .table-pay .sum {
+    width: 75px;
+}
+
+.wrap-table-old-pay .thead-top td:nth-child(2),
+.wrap-table-old-pay .thead-bottom td:nth-child(2),
+.wrap-table-old-pay .wrap-tcontent .table-pay .recipient_data {
+    width: 380px;
+}
+
+.wrap-table-old-pay .thead-top td:nth-child(3),
+.wrap-table-old-pay .thead-bottom td:nth-child(3),
+.wrap-table-old-pay .wrap-tcontent .table-pay .details {
+    width: 120px;
+}
+
+.wrap-table-old-pay .thead-top td:last-child,
+.wrap-table-old-pay .thead-bottom td:last-child {
+    width: 85px;
+}
+.wrap-table-old-pay .wrap-tcontent .table-pay .rating{
+    width: 55px;
+    line-height: 38px;
+}
+
+.wrap-table-old-pay .wrap-tcontent .table-pay .del {
+    background: url("../img/icon-del.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-radius: 8px;
+    display: block;
+    float: right;
+    height: 14px;
+    margin: 12px -2px 11px 0;
+    width: 16px;
+}
+.wrap-table-old-pay .wrap-tcontent .table-pay .del:hover {
+    background: url("../img/icon-del-hover.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.wrap-table-old-pay .wrap-tcontent .table-pay td {
+    height: 38px;
+    text-align: center;
+    padding: 0 4px;
+}
+
+.wrap-table-old-pay .wrap-tcontent .table-pay tr:nth-child(2n-1) {
+    background-color: rgba(59, 59, 59, 0.05);
+}
+
+.wrap-table-old-pay .wrap-tcontent .table-pay div:last-child ul {
+    padding-bottom: 20px;
+}
+
+.wrap-table-old-pay .thead-top,
+.wrap-table-old-pay .thead-bottom/*,
+.wrap-table-old-pay .wrap-tcontent .empty*/ {
+    height: 20px;
+}
+
+
+.wrap-table-old-pay .thead-top,
+.wrap-table-old-pay .thead-bottom {
+    position: absolute;
+    z-index: 2;
+    width: 660px;
+}
+
+.wrap-table-old-pay .thead-top {
+    top: 0;
+}
+
+.wrap-table-old-pay .thead-bottom {
+    bottom: 0;
+}
+
+.wrap-table-old-pay .wrap-tcontent .table-pay {
+    font-size: 12px;
+    font-weight: bold;
+    width: 659px;
+}
+
+/* не обязательно */
+.wrap-table-old-pay .wrap-tcontent .table-pay tr {
+    border-bottom: 1px solid #f9f9f9;
+    cursor: pointer;
+}
+.wrap-table-old-pay .wrap-tcontent .table-pay tr:hover {
+    background-color: rgba(94, 152, 39, 0.1);
+}
+
+.wrap-table-old-pay .thead-top tr,
+.wrap-table-old-pay .thead-bottom tr {
+    border-bottom: 1px solid #f9f9f9;
+    border-top: 1px solid #f9f9f9;
+}
+
+.wrap-table-old-pay .thead-top td,
+.wrap-table-old-pay .thead-bottom td {
+    text-align: center;
+    background: #d4d4d4;
+}
+/*------------------------- Таблица список платежей -----------------------------------------*/
+/* main block of the bottom block*/
+.wrap-payments-list{
+    width:100%;
+}
+
+/* section add background for text, when customer searching */
+span.highlight {
+    background-color: rgba(118, 164, 187, 0.50); cursor: pointer; }
+
