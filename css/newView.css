@@ -9,34 +9,34 @@ body {
     background: url("../img/concrete_wall_3.png") repeat scroll 0 0 #eaeaea;
 }
 
-@media screen and ( max-width: 1200px ) {
-    .wrap-counterparties {
-        display: none;
-        float: none;
-    }
+/*@media screen and ( max-width: 1200px ) {*/
+    /*.wrap-counterparties {*/
+        /*display: none;*/
+        /*float: none;*/
+    /*}*/
 
-    .content {
-        width: 1000px !important;
-    }
+    /*.content {*/
+        /*width: 1000px !important;*/
+    /*}*/
 
-    .wrap-new-pay {
-        float: none !important;
-        margin: 0 auto;
-    }
+    /*.wrap-new-pay {*/
+        /*float: none !important;*/
+        /*margin: 0 auto;*/
+    /*}*/
 
-}
+/*}*/
 
-@media screen and ( max-width: 1000px ) {
-    .content {
-        width: 800px !important;
-    }
-}
+/*@media screen and ( max-width: 1000px ) {*/
+    /*.content {*/
+        /*width: 800px !important;*/
+    /*}*/
+/*}*/
 
-@media screen and ( max-width: 600px ) {
-    .wrap-new-pay {
-        float: left !important;
-    }
-}
+/*@media screen and ( max-width: 600px ) {*/
+    /*.wrap-new-pay {*/
+        /*float: left !important;*/
+    /*}*/
+/*}*/
 
 .top {
     height: 33px;
@@ -66,19 +66,14 @@ body {
 
 .content {
     margin: 0 auto;
-    width: 1280px;
+    /*width: 1280px;*/
+    width: 98%;
 }
 
 .wrap-new-pay {
-    width: 604px;
-    height: 440px;
-    float: left;
-}
-
-.wrap-counterparties {
-    width: 675px;
-    height: 440px;
-    float: left;
+    /*width: 604px;*/
+    /*height: 440px;*/
+    /*float: left;*/
 }
 
 .title {
@@ -89,11 +84,22 @@ body {
 }
 
 .wrap-counterparties .title {
-    margin: 6px 13px 30px 0;
+    margin: 6px 0 30px 0;
 }
 
 .wrap-new-pay .title {
-    margin: 6px -106px 15px 0;
+    margin: 6px 0 15px 0;
+}
+
+.wrap-payments-list .title {
+    margin: 15px 0;
+}
+
+/* ----------------------------- Блок - создание нового платежей -------------------------- */
+/* main wrap of the left block*/
+.wrap-new-pay{
+    width:50% ;
+    float:left;
 }
 
 .wrap-new-pay .new-pay {
@@ -187,38 +193,47 @@ body {
     border-bottom: 1px solid #f9f9f9;
 }
 
-/* ----------------------------- Блок - история платежей -------------------------- */
-/* main wrap of the left block*/
+/*---------------------------------- Таблица предприятий-контрагентов --------------------- */
+/* main block of the right block */
+
 .wrap-counterparties {
-    position: relative;
+/*    position: relative;*/
     bottom: 0;
+    width: 50%;
+    float: right;
 }
 
 .wrap-counterparties .wrap-search {
-    height: 80px;
+    height: 32px;
+    margin-bottom: 15px;
 }
 
+.wrap-payments-list .wrap-search .search,
 .wrap-counterparties .wrap-search .search {
     background: url("../img/icon-search.jpg") no-repeat scroll 4px 6px #fff;
     padding-left: 25px;
-    width: 407px;
+    width:50%;
     font-weight: bold;
-    margin: 0 14px 0 10px;
 }
 
-.wrap-counterparties .wrap-search .search, .wrap-counterparties .wrap-search .sort-type {
+.wrap-counterparties .wrap-search .search,
+.wrap-counterparties .wrap-search .sort-type,
+.wrap-payments-list .wrap-search .search,
+.wrap-payments-list .wrap-search .sort-type {
     float: left;
     height: 30px;
     border: 1px solid #b7b7b7;
     border-radius: 3px;
 }
 
-.wrap-counterparties .wrap-search .sort-type {
-    width: 213px;
+.wrap-counterparties .wrap-search .sort-type,
+.wrap-payments-list .wrap-search .sort-type {
+    height: 32px;
+    float: right;
+    width: 30%;
 }
 
-.wrap-counterparties .wrap-search .aktual-data {
-}
+.wrap-counterparties .wrap-search .aktual-data {}
 
 .wrap-counterparties .wrap-search .aktual-data textarea {
     width: 60px;
@@ -241,32 +256,40 @@ body {
     top: -6px;
     width: 330px;
 }
-
 .wrap-counterparties .wrap-span-info span {
     font-size: 10px;
     color: #7a7a7a;
     height: 15px;
 }
-
 .wrap-counterparties .wrap-span-info .amount-payments-found {
     width: 4px;
     display: inline-block;
 }
 
-/*---------------------------------- Таблица предприятий-контрагентов --------------------- */
-/* main block of the right block */
+/* ----------------------------- Блок - список платежей -------------------------- */
+/* main bottom block*/
+.wrap-payments-list{
+    float: left;
+    width: 100%;
+}
+
+.wrap-payments-list .wrap-search {
+    height: 32px;
+    margin-bottom: 15px;
+}
+
 .wrap-table-old-pay {
     position: relative;
-    width: 674px;
+    /*width: 674px;*/
 }
 
 .wrap-table-old-pay .wrap-tcontent {
-    height: 233px;
+    height: 266px;
     overflow: auto;
     position: relative;
     padding: 20px 0;
     z-index: 1;
-    width: 676px;
+    /*width: 676px;*/
 }
 
 .wrap-table-old-pay .thead-top,
@@ -274,6 +297,7 @@ body {
     font-size: 12px;
     font-weight: bold;
     color: #444;
+    width: 100%;
 }
 
 .wrap-table-old-pay .wrap-tcontent .table-pay,
@@ -283,18 +307,11 @@ body {
     border-collapse: collapse;
 }
 
-.wrap-table-old-pay .wrap-tcontent li {
-    display: inline-block;
-    text-align: center;
-    /*width: 100px;*/
-    height: 39px;
-    line-height: 39px;
-}
 
 .wrap-table-old-pay .thead-top td:first-child,
 .wrap-table-old-pay .thead-bottom td:first-child,
 .wrap-table-old-pay .wrap-tcontent .table-pay .sum {
-    width: 75px;
+    width: 11%;
 }
 
 .wrap-table-old-pay .thead-top td:nth-child(2),
@@ -341,10 +358,6 @@ body {
     background-color: rgba(59, 59, 59, 0.05);
 }
 
-.wrap-table-old-pay .wrap-tcontent .table-pay div:last-child ul {
-    padding-bottom: 20px;
-}
-
 .wrap-table-old-pay .thead-top,
 .wrap-table-old-pay .thead-bottom/*,
 .wrap-table-old-pay .wrap-tcontent .empty*/ {
@@ -356,7 +369,7 @@ body {
 .wrap-table-old-pay .thead-bottom {
     position: absolute;
     z-index: 2;
-    width: 660px;
+    /*width: 660px;*/
 }
 
 .wrap-table-old-pay .thead-top {
@@ -370,7 +383,8 @@ body {
 .wrap-table-old-pay .wrap-tcontent .table-pay {
     font-size: 12px;
     font-weight: bold;
-    width: 659px;
+/*    width: 659px;*/
+    width: 100%;
 }
 
 /* не обязательно */
@@ -393,13 +407,16 @@ body {
     text-align: center;
     background: #d4d4d4;
 }
-/*------------------------- Таблица список платежей -----------------------------------------*/
-/* main block of the bottom block*/
-.wrap-payments-list{
-    width:100%;
-}
+
 
 /* section add background for text, when customer searching */
 span.highlight {
     background-color: rgba(118, 164, 187, 0.50); cursor: pointer; }
 
+
+footer {
+    float: left;
+    margin-top: 2%;
+    text-align: center;
+    width: 100%;
+}
