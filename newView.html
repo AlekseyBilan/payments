@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Контрагенты</title>
+    <link rel ='stylesheet' type='text/css' href='css/newView.css'/>
+</head>
+<body>
+
+<div class="top">
+    <a href="#">Архив платежей</a>
+    <a href="#">Создать новый платёж</a>
+</div>
+<div class='wrap-content'>
+    <div class='content'>
+        <div class='wrap-new-pay'>
+            <h2 class='title'>Заявка на новый платёж</h2>
+            <form class='form-new-pay'>
+                <table class="new-pay">
+                    <tr>
+                        <td nowrap>Номер документа:</td>
+                        <td><input type='text' name='num' class='numberSum' maxlength='20'/><span class='date-new-pay'>22.02.16</span></td>
+                    </tr>
+                    <tr>
+                        <td nowrap>Счет отправителя:</td>
+                        <td>
+                            <select class='account-sender'>
+                                <option>2600505050505 Иванов И.И.</option>
+                                <option>2600505050506 Сидоров С.С.</option>
+                                <option>2600505050507 Петров П.П.</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap>Сумма:</td>
+                        <td><input type='text' class='numberSum' name='sum' maxlength='16'/></td>
+                    </tr>
+                    <tr>
+                        <td nowrap>Счет получателя:</td>
+                        <td><input type='text' class='number' name='recipient_account' min='5' maxlength='19' value=''/></td>
+                    </tr>
+                    <tr>
+                        <td nowrap>Код ЕГРПОУ(ОКПО):</td>
+                        <td><input type='text' class='number' name='recipient_nceo' maxlength='16' value=''/></td>
+                    </tr>
+                    <tr>
+                        <td nowrap>Наименование:</td>
+                        <td><input type='text' name='recipient_name' maxlength='140' value=''/></td>
+                    </tr>
+                    <tr>
+                        <td nowrap>Код банка(МФО):</td>
+                        <td><input type='text' class='number' name='recipient_ifi' maxlength='6' value=''/></td>
+                    </tr>
+                    <tr>
+                        <td class='details'  nowrap>Назначение платежа:</td>
+                        <td><textarea name='details' maxlength='160'></textarea></td>
+                    </tr>
+                    <tr>
+                        <td   class='actions' colspan='2'>
+                            <input type='button' class='send' value='Подписать и отправить' title="Заполнить коллекцию платежей тестовыми платежами"/>
+                            <input type='button' class='save' value='Сохранить' />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <div class='wrap-counterparties'>
+            <h2 class='title'>Лента компаний-контрагентов</h2>
+            <div class='wrap-search'>
+                <input class='search' type='text' placeholder='Введите поисковой запрос' />
+                <select class='sort-type'>
+                    <option selected='selected'>тип сортировки</option>
+                    <option data-attr="date-create">последние добавленные</option>
+                    <option data-attr="rating">часто используемые</option>
+                </select>
+            </div>
+
+            <div class="wrap-table-old-pay">
+                <table class="thead-top">
+                    <tr>
+                        <td>Сумма</td>
+                        <td>Получатель</td>
+                        <td>Назначение</td>
+                        <td>Рейтинг</td>
+                    </tr>
+                </table>
+                <table class="thead-bottom">
+                    <tr>
+                        <td>Счет</td>
+                        <td>Имя</td>
+                        <td>Окпо</td>
+                        <td>Рейтинг</td>
+                    </tr>
+                </table>
+                <div class="wrap-tcontent">
+                    <table class="table-pay">
+                        <tbody>
+                            <tr class="payment">
+                                <td class="recipient_data">267850156403825, Получатель №3, 72777385 </td>
+                                <td class="rating date_create" align="center" data-date-create="1454887783947">
+                                    4
+                                    <a class="del" href="#"></a>
+                                </td>
+                            </tr>
+                            <tr class="payment">
+                                <td class="sum">1615 UAH</td>
+                                <td class="recipient_data">267850156403825, Получатель №3, 72777385 </td>
+                                <td class="details">Оплата услуг согласно договора 5</td>
+                                <td class="rating date_create" align="center" data-date-create="">
+                                    3
+                                    <a class="del" href="#"></a>
+                                </td>
+                            </tr>
+                            <tr class="payment">
+                                <td class="recipient_data">267850156403825, Получатель №3, 72777385 </td>
+                                <td class="details">Оплата услуг согласно договора 5</td>
+                                <td class="rating date_create" align="center" data-date-create="">
+                                    3
+                                    <a class="del" href="#"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class='wrap-payments-list'>
+            <h2 class='title'>Лента Платежей</h2>
+            <div class='wrap-search'>
+                <input class='search' type='text' id="spterm" placeholder='Введите поисковой запрос' />
+                <select class='sort-type'>
+                    <option selected='selected'>тип сортировки</option>
+                    <option data-attr="date-create">последние добавленные</option>
+                    <option data-attr="rating">часто используемые</option>
+                </select>
+            </div>
+
+            <div class="wrap-table-old-pay">
+                <table class="thead-top">
+                    <tr>
+                        <td>Сумма</td>
+                        <td>Получатель</td>
+                        <td>Назначение</td>
+                        <td>Рейтинг</td>
+                    </tr>
+                </table>
+                <table class="thead-bottom">
+                    <tr>
+                        <td>Сумма</td>
+                        <td>Получатель</td>
+                        <td>Назначение</td>
+                        <td>Рейтинг</td>
+                    </tr>
+                </table>
+                <div class="wrap-tcontent" id="content">
+                    <table class="table-pay">
+                        <tbody>
+                        <tr class="payment">
+                            <td class="sum">1615 UAH</td>
+                            <td class="recipient_data">267850156403825, Получатель №3, 72777385 </td>
+                            <td class="details">Оплата услуг согласно договора</td>
+                            <td class="rating date_create" align="center" data-date-create="1454887783947">
+                                4
+                                <a class="del" href="#"></a>
+                            </td>
+                        </tr>
+                        <tr class="payment">
+                            <td class="sum">1615 UAH</td>
+                            <td class="recipient_data">267850156403825, Получатель №3, 72777385 </td>
+                            <td class="details">Оплата услуг согласно договора 5</td>
+                            <td class="rating date_create" align="center" data-date-create="">
+                                3
+                                <a class="del" href="#"></a>
+                            </td>
+                        </tr>
+                        <tr class="payment">
+                            <td class="sum">1615 UAH</td>
+                            <td class="recipient_data">267850156403825, Получатель №3, 72777385 </td>
+                            <td class="details">Оплата услуг согласно договора 5</td>
+                            <td class="rating date_create" align="center" data-date-create="">
+                                3
+                                <a class="del" href="#"></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>
+        copyright © 2016
+    </p>
+</footer>
+<!-- ----------------------- Templates --------------------------- -->
+<script type="text/template" id="new-pay">
+
+    <tr>
+        <td nowrap>Номер документа:</td>
+        <td><input type='text' name='num' class='numberSum' maxlength='20'/><span class='date-new-pay'>23.05.14</span></td>
+    </tr>
+    <tr>
+        <td nowrap>Счет отправителя:</td>
+        <td>
+            <select class='account-sender'>
+                <option>2600505050505 Иванов И.И.</option>
+                <option>2600505050506 Сидоров С.С.</option>
+                <option>2600505050507 Петров П.П.</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td nowrap>Сумма:</td>
+        <td><input type='text' class='numberSum' name='sum' maxlength='16'/></td>
+    </tr>
+    <tr>
+        <td nowrap>Счет получателя:</td>
+        <td><input type='text' class='number' name='recipient_account' min='5' maxlength='19' value='<%= recipient_account %>'/></td>
+    </tr>
+    <tr>
+        <td nowrap>Код ЕГРПОУ(ОКПО):</td>
+        <td><input type='text' class='number' name='recipient_nceo' maxlength='16' value='<%= recipient_nceo %>'/></td>
+    </tr>
+    <tr>
+        <td nowrap>Наименование:</td>
+        <td><input type='text' name='recipient_name' maxlength='140' value='<%= recipient_name %>'/></td>
+    </tr>
+    <tr>
+        <td nowrap>Код банка(МФО):</td>
+        <td><input type='text' class='number' name='recipient_ifi' maxlength='6' value='<%= recipient_ifi %>'/></td>
+    </tr>
+    <tr>
+        <td class='details'  nowrap>Назначение платежа:</td>
+        <td><textarea name='details' maxlength='160'></textarea></td>
+    </tr>
+    <tr>
+        <td   class='actions' colspan='2'>
+            <input type='button' class='send' value='Подписать и отправить' title="Заполнить коллекцию платежей тестовыми платежами"/>
+            <input type='button' class='save' value='Сохранить' />
+        </td>
+    </tr>
+
+</script>
+<!--<script type="text/javascript" src="js/libs/jQuery.js"></script>-->
+<!--<script type="text/javascript" src="js/libs/underscore.js"></script>-->
+<!--<script type="text/javascript" src="js/libs/backbone.js"></script>-->
+<!--<script type="text/javascript" src="js/models/newPaymentModel.js"></script>-->
+<!--<script type="text/javascript" src="js/collections/paymentListCollection.js"></script>-->
+<!--<script type="text/javascript" src="js/views/paymentView.js"></script>-->
+<!--<script type="text/javascript" src="js/views/newPaymentView.js"></script>-->
+<!--<script type="text/javascript" src="js/views/paymentCollectionView.js"></script>-->
+<!--<script type="text/javascript" src="js/routers/router.js"></script>-->
+<!--<script type="text/javascript" src="js/app.js"></script>-->
+<!--<script type="text/javascript" src="js/textHighlight.js"></script>-->
+<!--<script type="text/javascript" src="js/paymentsAutoCreator.js"></script>-->
+</body>
+</html>
