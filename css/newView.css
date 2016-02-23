@@ -67,6 +67,7 @@ body {
     border-bottom: 1px solid #b6b6b6;
     background-color: rgba(59, 59, 59, 0.05);
     margin: 0 auto;
+    min-width: 350px;/*fix it*/
 }
 
 .top a {
