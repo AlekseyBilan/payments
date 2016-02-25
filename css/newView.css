@@ -111,7 +111,6 @@ body {
 .wrap-payments-list .title {
     margin: 15px 0;
 }
-
 /* ----------------------------- Блок - создание нового платежей -------------------------- */
 /* main wrap of the left block*/
 .wrap-new-pay{
@@ -211,6 +210,7 @@ body {
     text-align: center;
     border-bottom: 1px solid #f9f9f9;
 }
+
 /*---------------------------------- Таблица предприятий-контрагентов --------------------- */
 /* main block of the right block */
 
@@ -250,15 +250,7 @@ body {
 }
 
 .wrap-counterparties .wrap-search .aktual-data {}
-
-.wrap-counterparties .wrap-search .aktual-data textarea {
-    width: 60px;
-    height: 15px;
-    margin-top: 5px;
-    text-align: center;
-    line-height: 16px;
-    font-weight: bold;
-}
+.wrap-counterparties .wrap-search .aktual-data textarea {}
 
 .wrap-counterparties .wrap-span-info {
     clear: left;
@@ -417,7 +409,9 @@ body {
 
 /* section add background for text, when customer searching */
 span.highlight {
-    background-color: rgba(118, 164, 187, 0.50); cursor: pointer; }
+    background-color: rgba(118, 164, 187, 0.50);
+    cursor: pointer;
+}
 
 footer {
     float: left;
